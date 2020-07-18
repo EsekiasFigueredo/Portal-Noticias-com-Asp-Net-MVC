@@ -1,0 +1,24 @@
+﻿@model IEnumerable<PortalNoticias.Models.Noticia>
+
+@{
+    ViewBag.Title = "Pagina Inicial";
+}
+
+
+@foreach (var item in Model) {
+   <div class="panel panel-default">
+       <div class="panel-heading">
+            <p class="panel-title">@item.Titulo</p>
+       </div>
+       <div class="panel-body">
+           <!--No metodo Substring, o primeiro argumento(0) indica a posição inicial a partir da qual vamos cortar o texto
+               enquanto o segundo(100) indica  a quantidade de caracteres que desejamos obter  
+            -->
+           <p>@item.Conteudo.Substring(0, 20) ...</p>
+       </div>
+       <div class="panel-footer">
+           @Html.ActionLink("Ler Mais", "Detalhes",new {id = item.Id},new { @class = "btn btn-default"})
+       </div>   
+   </div>
+}
+ 
